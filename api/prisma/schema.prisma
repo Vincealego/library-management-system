@@ -16,6 +16,7 @@ model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   name      String
+  password  String
   role      Role     @default(PATRON)
   createdAt DateTime @default(now())
   reviews   Review[]
@@ -31,6 +32,8 @@ model Book {
   id            Int      @id @default(autoincrement())
   title         String
   author        String
+  isbn          String   @unique
+  totalCopies   Int      @default(1)
   publishedYear Int?
   genreId       Int
   genre         Genre    @relation(fields: [genreId], references: [id])
@@ -39,7 +42,7 @@ model Book {
   @@index([genreId])
 }
 
-// Stretch: Review
+// Stretch from week 1: Review
 model Review {
   id      Int     @id @default(autoincrement())
   rating  Int
