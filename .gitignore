@@ -1,3 +1,5 @@
 node_modules
 dist
 .env
+# client/.env only holds the public API URL (no secrets), and the assignment checks it
+!client/.env
